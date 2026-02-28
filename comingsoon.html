@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en" class="dark" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="assets/icons8-ar-64.png">
+    <title>Coming Soon | Avasa VR</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+        }
+    </script>
+    <style>
+        .gradient-text { @apply bg-clip-text text-transparent bg-gradient-to-r from-emerald-500 to-cyan-500; }
+        .glass { @apply bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl; }
+        @keyframes pulse-ring {
+            0% { transform: scale(0.8); opacity: 0.5; }
+            100% { transform: scale(1.2); opacity: 0; }
+        }
+        .animate-ring { animation: pulse-ring 2s cubic-bezier(0.4, 0, 0.6, 1) infinite; }
+    </style>
+    <script>
+        if (localStorage.getItem('theme') === 'light') document.documentElement.classList.remove('dark');
+        else document.documentElement.classList.add('dark');
+
+        if (localStorage.getItem('direction') === 'rtl') document.documentElement.setAttribute('dir', 'rtl');
+        else document.documentElement.setAttribute('dir', 'ltr');
+    </script>
+</head>
+<body class="bg-slate-50 dark:bg-slate-950 transition-colors duration-500 min-h-screen flex flex-col items-center justify-center relative overflow-x-hidden">
+
+    <nav class="fixed top-0 w-full z-50 p-4 md:p-6">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <a href="index.html" class="flex items-center space-x-2 md:space-x-3 group">
+                <div class="bg-slate-900 rounded-lg p-1.5 md:p-2 border border-white/10">
+                    <i class="fas fa-vr-cardboard text-lg md:text-xl text-emerald-500"></i>
+                </div>
+                <span class="text-lg md:text-xl font-black uppercase italic dark:text-white">Avasa<span class="text-emerald-500">VR</span></span>
+            </a>
+
+            <div class="flex items-center space-x-2 md:space-x-3">
+                <button onclick="toggleTheme()" class="p-2.5 md:p-3 rounded-xl bg-white dark:bg-slate-900 shadow-xl border border-slate-200 dark:border-white/10 transition-transform active:scale-95">
+                    <i class="fas fa-moon dark:hidden text-slate-600"></i>
+                    <i class="fas fa-sun hidden dark:block text-emerald-400"></i>
+                </button>
+                <button onclick="toggleDirection()" class="px-3 md:px-4 py-2 rounded-xl bg-white dark:bg-slate-900 shadow-lg border border-slate-200 dark:border-white/10 text-[9px] md:text-[10px] font-black uppercase tracking-widest dark:text-white transition-transform active:scale-95">
+                    LTR/RTL
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <main class="relative z-10 text-center px-6 py-20 w-full max-w-5xl">
+        
+        <div class="mb-6 md:mb-8 relative inline-block">
+            <div class="absolute inset-0 bg-emerald-500 rounded-full animate-ring"></div>
+            <div class="relative bg-emerald-500 text-white w-16 h-16 md:w-20 md:h-20 rounded-full flex items-center justify-center text-2xl md:text-3xl shadow-lg shadow-emerald-500/50">
+                <i class="fas fa-rocket"></i>
+            </div>
+        </div>
+
+        <h1 class="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-black uppercase italic tracking-tighter text-slate-900 dark:text-white mb-4 md:mb-6 leading-none">
+            Mission <span class="gradient-text">Pending</span>
+        </h1>
+        
+        <p class="text-slate-500 dark:text-slate-400 text-xs sm:text-sm md:text-lg max-w-2xl mx-auto mb-8 md:mb-12 font-medium tracking-wide leading-relaxed">
+            We are calibrating the neural links for your next-gen VR experience. 
+            The portal opens soon. <span class="hidden sm:inline">Stay synchronized.</span>
+        </p>
+
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-6 lg:gap-8 mb-10 md:mb-16">
+            <div class="bg-white dark:bg-slate-900 p-4 sm:p-6 md:p-8 rounded-2xl md:rounded-[2.5rem] border border-slate-200 dark:border-white/10 shadow-xl">
+                <span id="days" class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-slate-900 dark:text-white italic leading-none">00</span>
+                <p class="text-[8px] md:text-[10px] font-black uppercase tracking-[0.2em] text-emerald-500 mt-2">Days</p>
+            </div>
+            <div class="bg-white dark:bg-slate-900 p-4 sm:p-6 md:p-8 rounded-2xl md:rounded-[2.5rem] border border-slate-200 dark:border-white/10 shadow-xl">
+                <span id="hours" class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-slate-900 dark:text-white italic leading-none">00</span>
+                <p class="text-[8px] md:text-[10px] font-black uppercase tracking-[0.2em] text-emerald-500 mt-2">Hours</p>
+            </div>
+            <div class="bg-white dark:bg-slate-900 p-4 sm:p-6 md:p-8 rounded-2xl md:rounded-[2.5rem] border border-slate-200 dark:border-white/10 shadow-xl">
+                <span id="minutes" class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-slate-900 dark:text-white italic leading-none">00</span>
+                <p class="text-[8px] md:text-[10px] font-black uppercase tracking-[0.2em] text-emerald-500 mt-2">Mins</p>
+            </div>
+            <div class="bg-white dark:bg-slate-900 p-4 sm:p-6 md:p-8 rounded-2xl md:rounded-[2.5rem] border border-slate-200 dark:border-white/10 shadow-xl">
+                <span id="seconds" class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-slate-900 dark:text-white italic leading-none">00</span>
+                <p class="text-[8px] md:text-[10px] font-black uppercase tracking-[0.2em] text-emerald-500 mt-2">Secs</p>
+            </div>
+        </div>
+
+        <div class="max-w-md mx-auto">
+            <form onsubmit="event.preventDefault(); alert('Target Acquired! We will notify you.')" class="flex flex-col sm:flex-row gap-3">
+                <input type="email" required placeholder="Enter Neural ID (Email)" class="flex-1 px-5 md:px-6 py-3.5 md:py-4 bg-white dark:bg-slate-900 border border-slate-200 dark:border-white/10 rounded-xl md:rounded-2xl focus:outline-none focus:border-emerald-500 dark:text-white transition-all text-sm">
+                <button type="submit" class="bg-emerald-500 hover:bg-emerald-400 text-white px-8 py-3.5 md:py-4 rounded-xl md:rounded-2xl font-black uppercase tracking-widest text-[10px] md:text-xs transition-all shadow-lg shadow-emerald-500/30 whitespace-nowrap">
+                    Notify Me
+                </button>
+            </form>
+        </div>
+    </main>
+
+    <div class="absolute -bottom-10 md:-bottom-24 -left-10 md:-left-24 w-48 md:w-96 h-48 md:h-96 bg-emerald-500/10 rounded-full blur-[60px] md:blur-[120px] -z-10"></div>
+    <div class="absolute -top-10 md:-top-24 -right-10 md:-right-24 w-48 md:w-96 h-48 md:h-96 bg-cyan-500/10 rounded-full blur-[60px] md:blur-[120px] -z-10"></div>
+
+    <script>
+        function toggleTheme() {
+            const html = document.documentElement;
+            html.classList.toggle('dark');
+            localStorage.setItem('theme', html.classList.contains('dark') ? 'dark' : 'light');
+        }
+
+        function toggleDirection() {
+            const html = document.documentElement;
+            const currentDir = html.getAttribute('dir');
+            const newDir = currentDir === 'ltr' ? 'rtl' : 'ltr';
+            html.setAttribute('dir', newDir);
+            localStorage.setItem('direction', newDir);
+        }
+
+        const targetDate = new Date("March 30, 2026 00:00:00").getTime();
+        const timer = setInterval(function() {
+            const now = new Date().getTime();
+            const distance = targetDate - now;
+            const d = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const h = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const m = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const s = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById("days").innerText = d < 10 ? "0"+d : d;
+            document.getElementById("hours").innerText = h < 10 ? "0"+h : h;
+            document.getElementById("minutes").innerText = m < 10 ? "0"+m : m;
+            document.getElementById("seconds").innerText = s < 10 ? "0"+s : s;
+
+            if (distance < 0) {
+                clearInterval(timer);
+                document.getElementById("days").innerText = "00";
+            }
+        }, 1000);
+    </script>
+</body>
+</html>

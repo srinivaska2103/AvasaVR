@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="assets/icons8-ar-64.png">
+    <title>Avasa VR | Step Into Another Reality</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            primary: '#10b981', // Emerald 500
+                            secondary: '#22d3ee', // Cyan 400
+                            accent: '#059669', // Emerald 600
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @keyframes pulse-glow {
+            0%, 100% { box-shadow: 0 0 15px #10b981, 0 0 30px #10b981; }
+            50% { box-shadow: 0 0 25px #22d3ee, 0 0 50px #22d3ee; }
+        }
+        .neon-btn { animation: pulse-glow 3s infinite; }
+        .glass { 
+            background: rgba(255, 255, 255, 0.7); 
+            backdrop-filter: blur(12px); 
+        }
+        .dark .glass { 
+            background: rgba(15, 23, 42, 0.85); 
+            backdrop-filter: blur(12px); 
+        }
+        .gradient-text {
+            background: linear-gradient(to right, #10b981, #22d3ee, #34d399);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-white transition-colors duration-300">
+
+   <nav class="fixed w-full z-50 glass border-b border-emerald-100 dark:border-white/10">
+    <div class="max-w-[1440px] mx-auto px-4 lg:px-6">
+        <div class="flex justify-between items-center h-20">
+            
+            <a href="index.html" class="flex-shrink-0">
+                <div class="flex items-center space-x-3 group cursor-pointer">
+                    <div class="relative">
+                        <div class="absolute -inset-1 bg-gradient-to-r from-emerald-500 to-cyan-500 rounded-full blur opacity-40 group-hover:opacity-100 transition duration-500"></div>
+                        <div class="relative bg-slate-900 rounded-lg p-2 flex items-center justify-center border border-white/10">
+                            <i class="fas fa-vr-cardboard text-2xl text-emerald-500 group-hover:text-cyan-400 transition-colors"></i>
+                        </div>
+                    </div>
+                    <div class="text-2xl font-black tracking-tighter italic uppercase">
+                        <span class="text-emerald-500">AVASA</span><span class="text-slate-900 dark:text-white transition-colors">VR</span>
+                    </div>
+                </div>
+            </a>
+
+            <div class="hidden lg:flex items-center justify-between flex-1 ml-10">
+                
+                <div class="flex items-center space-x-3 xl:space-x-6 text-[10px] xl:text-[11px] font-bold uppercase tracking-widest text-slate-700 dark:text-slate-200">
+                    <a href="index.html" class="hover:text-emerald-500 transition relative group whitespace-nowrap">
+                        Home1
+                        <!-- <span class="absolute -bottom-1 left-0 w-full h-0.5 bg-emerald-500 shadow-[0_0_8px_#10b981] rounded-full"></span> -->
+                    </a>
+                    <a href="home2.html" class="hover:text-emerald-500 transition relative group whitespace-nowrap">
+                        Home2
+                        <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-emerald-500 transition-all group-hover:w-full rounded-full"></span>
+                    </a>
+                    <a href="booking.html" class="hover:text-emerald-500 transition relative group whitespace-nowrap">
+                        Book Now
+                        <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-emerald-500 transition-all group-hover:w-full rounded-full"></span>
+                    </a>
+                    <a href="services.html" class="hover:text-emerald-500 transition relative group whitespace-nowrap">
+                        Services
+                        <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-emerald-500 transition-all group-hover:w-full rounded-full"></span>
+                    </a>
+                    <a href="gallery.html" class="hover:text-emerald-500 transition relative group whitespace-nowrap">
+                        Gallery
+                        <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-emerald-500 transition-all group-hover:w-full rounded-full"></span>
+                    </a>
+                    <a href="about.html" class="hover:text-emerald-500 transition relative group whitespace-nowrap">
+                        About Us
+                        <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-emerald-500 transition-all group-hover:w-full rounded-full"></span>
+                    </a>
+                    <a href="pricing.html" class="relative text-emerald-500 transition group whitespace-nowrap">
+                        Pricing
+                         <span class="absolute -bottom-1 left-0 w-full h-0.5 bg-emerald-500 shadow-[0_0_8px_#10b981] rounded-full"></span>
+                    </a>
+                    <a href="contact.html" class="hover:text-emerald-500 transition relative group whitespace-nowrap">
+                        Contact
+                        <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-emerald-500 transition-all group-hover:w-full rounded-full"></span>
+                    </a>
+                </div>
+
+                <div class="flex items-center space-x-3 ml-4">
+                    <div class="h-6 w-[1px] bg-emerald-200 dark:bg-white/20 mr-2"></div>
+                    
+                    <button onclick="toggleTheme()" class="p-2 rounded-lg bg-slate-100 dark:bg-slate-800 hover:bg-emerald-50 dark:hover:bg-emerald-900/30 transition-colors">
+                        <i class="fas fa-moon text-slate-600 dark:hidden"></i>
+                        <i class="fas fa-sun hidden dark:block text-emerald-400"></i>
+                    </button>
+
+                    <button onclick="toggleDirection()" class="text-[9px] font-black border-2 border-slate-200 dark:border-slate-700 px-3 py-2 rounded-lg text-slate-600 dark:text-slate-300 uppercase hover:border-emerald-500 transition-colors whitespace-nowrap">
+                        LTR/RTL
+                    </button>
+
+                    <a href="login.html" class="whitespace-nowrap">
+                        <button class="bg-emerald-500 hover:bg-emerald-600 text-white px-4 py-2 rounded-lg text-[10px] font-black uppercase tracking-widest transition shadow-lg shadow-emerald-500/20">
+                            Register
+                        </button>
+                    </a>
+
+                    <a href="user.html" class="flex-shrink-0">
+                        <div class="flex items-center space-x-2 p-1 pr-3 rounded-lg bg-slate-100 dark:bg-slate-800 border border-transparent hover:border-emerald-500 transition-all cursor-pointer">
+                            <img src="https://ui-avatars.com/api/?name=User&background=10b981&color=fff" alt="User" class="w-7 h-7 rounded-md">
+                            <span class="text-[10px] font-black dark:text-white uppercase tracking-tighter xl:block hidden">Dashboard</span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+            <div class="flex lg:hidden items-center">
+                <button id="menu-btn" class="p-2 text-slate-800 dark:text-white focus:outline-none">
+                    <i class="fas fa-bars-staggered text-2xl"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div id="mobile-menu" class="hidden lg:hidden flex-col bg-white dark:bg-slate-900 border-t border-emerald-100 dark:border-white/10 shadow-2xl overflow-y-auto max-h-[90vh]">
+        <div class="p-6 space-y-6">
+          <a href="user.html">
+            <div class="flex items-center space-x-4 p-4 bg-slate-50 dark:bg-slate-800/50 rounded-2xl">
+                <img src="https://ui-avatars.com/api/?name=User&background=10b981&color=fff" alt="User" class="w-12 h-12 rounded-xl border-2 border-emerald-500">
+                <div class="text-left">
+                    <p class="text-sm font-black dark:text-white uppercase tracking-tighter">Guest Explorer</p>
+                    <p class="text-[10px] text-emerald-500 font-bold uppercase">Ready to Play</p>
+                </div>
+            </div>
+          </a>
+            
+
+           <div class="grid grid-cols-2 gap-3 text-center">
+    <a href="index.html" class="p-4 bg-slate-50 dark:bg-slate-800 rounded-xl font-bold text-[10px] uppercase text-slate-700 dark:text-slate-200 hover:border-emerald-500/50 border border-transparent transition-all">
+        Home1
+    </a>
+
+    <a href="home2.html" class="p-4 bg-slate-50 dark:bg-slate-800 rounded-xl font-bold text-[10px] uppercase text-slate-700 dark:text-slate-200 hover:border-emerald-500/50 border border-transparent transition-all">
+        Home2
+    </a>
+
+    <a href="booking.html" class="p-4 bg-slate-50 dark:bg-slate-800 rounded-xl font-bold text-[10px] uppercase text-slate-700 dark:text-slate-200 hover:border-emerald-500/50 border border-transparent transition-all">
+        Book Now
+    </a>
+
+    <a href="services.html" class="p-4 bg-slate-50 dark:bg-slate-800 rounded-xl font-bold text-[10px] uppercase text-slate-700 dark:text-slate-200 hover:border-emerald-500/50 border border-transparent transition-all">
+        Services
+    </a>
+
+    <a href="gallery.html" class="p-4 bg-slate-50 dark:bg-slate-800 rounded-xl font-bold text-[10px] uppercase text-slate-700 dark:text-slate-200 hover:border-emerald-500/50 border border-transparent transition-all">
+        Gallery
+    </a>
+      <a href="about.html" class="p-4 bg-slate-50 dark:bg-slate-800 rounded-xl font-bold text-[10px] uppercase text-slate-700 dark:text-slate-200 hover:border-emerald-500/50 border border-transparent transition-all">
+        AboutUs
+    </a>
+      <a href="pricing.html" class="p-4 bg-emerald-500 text-white rounded-xl font-black text-[10px] uppercase shadow-lg shadow-emerald-500/20 transition-all">
+        Pricing
+    </a>
+    
+    <a href="contact.html" class="p-4 bg-slate-50 dark:bg-slate-800 rounded-xl font-bold text-[10px] uppercase text-slate-700 dark:text-slate-200 hover:border-emerald-500/50 border border-transparent transition-all">
+        Contact
+    </a>
+</div>
+
+            <div class="space-y-3 pt-4 border-t border-slate-100 dark:border-slate-800">
+                <div class="flex gap-3">
+                    <button onclick="toggleTheme()" class="flex-1 flex items-center justify-center space-x-2 p-4 bg-slate-100 dark:bg-slate-800 rounded-xl">
+                        <i class="fas fa-circle-half-stroke text-emerald-500"></i>
+                        <span class="text-[10px] font-black uppercase dark:text-white">Appearance</span>
+                    </button>
+                    <button onclick="toggleDirection()" class="flex-1 flex items-center justify-center space-x-2 p-4 bg-slate-100 dark:bg-slate-800 rounded-xl">
+                        <i class="fas fa-arrow-right-arrow-left text-emerald-500"></i>
+                        <span class="text-[10px] font-black uppercase dark:text-white">Direction</span>
+                    </button>
+                </div>
+                <br>
+                <a href="login.html">
+                    <button class="w-full bg-emerald-500 text-white p-4 rounded-xl font-black uppercase text-xs tracking-widest shadow-lg shadow-emerald-500/20">
+                    Register Account
+                </button>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</nav>
+<script>
+    // Add this to your script section to auto-highlight based on URL
+const currentPath = window.location.pathname.split("/").pop();
+const navLinks = document.querySelectorAll('nav a');
+
+navLinks.forEach(link => {
+    if (link.getAttribute('href') === currentPath) {
+        link.classList.add('text-emerald-500');
+        // Add the underline span dynamically if needed
+    }
+});
+    // --- 1. THEME TOGGLE LOGIC ---
+    function toggleTheme() {
+        const html = document.documentElement;
+        if (html.classList.contains('dark')) {
+            html.classList.remove('dark');
+            localStorage.setItem('theme', 'light');
+        } else {
+            html.classList.add('dark');
+            localStorage.setItem('theme', 'dark');
+        }
+    }
+
+    // --- 2. DIRECTION TOGGLE LOGIC ---
+    function toggleDirection() {
+        const html = document.documentElement;
+        const currentDir = html.getAttribute('dir');
+        const newDir = currentDir === 'ltr' ? 'rtl' : 'ltr';
+        
+        html.setAttribute('dir', newDir);
+        localStorage.setItem('direction', newDir);
+    }
+
+    // --- 3. MOBILE MENU LOGIC ---
+   
+
+    menuBtn.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden');
+        mobileMenu.classList.toggle('flex');
+    });
+
+    // Close mobile menu on resize to avoid UI ghosting
+    window.addEventListener('resize', () => {
+        if (window.innerWidth >= 1024) {
+            mobileMenu.classList.add('hidden');
+            mobileMenu.classList.remove('flex');
+        }
+    });
+
+    // --- 4. LOAD PREFERENCES ON PAGE LOAD ---
+    (function initPreferences() {
+        // Load Theme
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme === 'light') {
+            document.documentElement.classList.remove('dark');
+        } else {
+            document.documentElement.classList.add('dark'); // Default to dark for VR vibe
+        }
+
+        // Load Direction
+        const savedDir = localStorage.getItem('direction');
+        if (savedDir) {
+            document.documentElement.setAttribute('dir', savedDir);
+        }
+    })();
+     menuBtn.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden');
+        mobileMenu.classList.toggle('flex');
+    });
+
+    window.addEventListener('resize', () => {
+        if (window.innerWidth >= 1024) {
+            mobileMenu.classList.add('hidden');
+            mobileMenu.classList.remove('flex');
+        }
+    });
+</script>
+<section class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden bg-slate-50 dark:bg-slate-950 transition-colors duration-500">
+    
+    <div class="absolute inset-0 z-0 opacity-20 dark:opacity-40">
+        <div class="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:40px_40px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)]"></div>
+    </div>
+
+    <div class="absolute top-0 left-1/4 w-96 h-96 bg-emerald-500/20 rounded-full blur-[120px] -z-10 animate-pulse"></div>
+    <div class="absolute bottom-0 right-1/4 w-64 h-64 bg-cyan-500/20 rounded-full blur-[100px] -z-10"></div>
+
+    <div class="max-w-7xl mx-auto px-4 lg:px-8 relative z-10">
+        <div class="text-center">
+            <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 mb-6 group hover:bg-emerald-500/20 transition-all cursor-default">
+                <span class="relative flex h-2 w-2">
+                    <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                    <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+                </span>
+                <span class="text-[10px] font-black uppercase tracking-[0.2em] text-emerald-600 dark:text-emerald-400">
+                    Live Booking Available
+                </span>
+            </div>
+
+            <h1 class="text-5xl md:text-7xl lg:text-8xl font-black uppercase italic tracking-tighter text-slate-900 dark:text-white mb-8">
+                Ready to <span class="gradient-text">Level Up?</span>
+            </h1>
+
+            <p class="text-lg md:text-xl text-slate-600 dark:text-slate-400 max-w-2xl mx-auto mb-10 leading-relaxed">
+                Whether you're a solo explorer or a squad of elite gamers, we have the perfect mission package for you. <span class="font-bold text-emerald-500">No hidden costs. No lag. Just pure reality.</span>
+            </p>
+
+            <div class="flex flex-wrap justify-center gap-6 md:gap-12">
+                <div class="text-center">
+                    <p class="text-2xl md:text-3xl font-black text-slate-900 dark:text-white">50+</p>
+                    <p class="text-[10px] font-bold uppercase tracking-widest text-emerald-500">VR Titles</p>
+                </div>
+                <div class="w-[1px] h-10 bg-slate-200 dark:bg-white/10 hidden sm:block"></div>
+                <div class="text-center">
+                    <p class="text-2xl md:text-3xl font-black text-slate-900 dark:text-white">4K</p>
+                    <p class="text-[10px] font-bold uppercase tracking-widest text-emerald-500">Resolution</p>
+                </div>
+                <div class="w-[1px] h-10 bg-slate-200 dark:bg-white/10 hidden sm:block"></div>
+                <div class="text-center">
+                    <p class="text-2xl md:text-3xl font-black text-slate-900 dark:text-white">8-Way</p>
+                    <p class="text-[10px] font-bold uppercase tracking-widest text-emerald-500">Multiplayer</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section id="pricing" class="py-24 bg-white dark:bg-slate-950 transition-colors duration-300 relative overflow-hidden">
+    
+    <div class="absolute top-1/2 left-0 w-72 h-72 bg-emerald-500/10 rounded-full blur-[120px] -translate-x-1/2"></div>
+    <div class="absolute top-0 right-0 w-72 h-72 bg-cyan-500/10 rounded-full blur-[100px]"></div>
+
+    <div class="max-w-7xl mx-auto px-4 lg:px-8 relative z-10">
+        <div class="text-center mb-20">
+            <h2 class="text-emerald-500 font-bold uppercase tracking-widest text-sm mb-3">Flexible Rates</h2>
+            <p class="text-4xl md:text-5xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter">
+                Choose Your <span class="gradient-text">Adventure</span>
+            </p>
+            <p class="mt-4 text-slate-500 dark:text-slate-400 max-w-lg mx-auto">Premium VR experiences at competitive prices. No hidden fees, just pure immersion.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 items-end">
+            
+            <div class="group relative p-8 rounded-3xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-white/10 hover:border-emerald-500/50 transition-all duration-500 text-center">
+                <div class="mb-6">
+                    <div class="w-12 h-1 bg-emerald-500 mx-auto mb-6 rounded-full"></div>
+                    <h3 class="text-xl font-bold text-slate-900 dark:text-white uppercase tracking-wider">Quick Play</h3>
+                    <p class="text-emerald-500 font-bold text-xs mt-2 uppercase">30 Minutes</p>
+                </div>
+                <div class="text-4xl font-black text-slate-900 dark:text-white mb-6">
+                    ₹499<span class="text-sm font-normal text-slate-500 uppercase"> / Person</span>
+                </div>
+                <ul class="text-sm text-slate-500 dark:text-slate-400 space-y-4 mb-8 text-left border-t border-slate-200 dark:border-white/5 pt-6">
+                    <li class="flex items-center"><span class="w-1.5 h-1.5 bg-emerald-500 rounded-full mr-3"></span> Any 1 Single Game</li>
+                    <li class="flex items-center"><span class="w-1.5 h-1.5 bg-emerald-500 rounded-full mr-3"></span> Standard VR Headset</li>
+                    <li class="flex items-center"><span class="w-1.5 h-1.5 bg-emerald-500 rounded-full mr-3"></span> Free Locker Usage</li>
+                </ul>
+                <button class="w-full py-3 rounded-xl border-2 border-emerald-500 text-emerald-500 font-black uppercase tracking-widest text-[10px] group-hover:bg-emerald-500 group-hover:text-white transition-all duration-300">
+                    Book Now
+                </button>
+            </div>
+
+            <div class="group relative p-8 rounded-3xl bg-slate-900 dark:bg-emerald-950/20 border-2 border-emerald-500 transform lg:scale-110 shadow-2xl shadow-emerald-500/20 text-center z-20">
+                <div class="absolute -top-5 left-1/2 -translate-x-1/2 bg-emerald-500 text-white text-[10px] font-black px-4 py-1 rounded-full uppercase tracking-widest shadow-lg">
+                    Most Popular
+                </div>
+                <div class="mb-6">
+                    <div class="w-12 h-1 bg-emerald-400 mx-auto mb-6 rounded-full animate-pulse"></div>
+                    <h3 class="text-xl font-bold text-white uppercase tracking-wider">Adventure Pass</h3>
+                    <p class="text-emerald-400 font-bold text-xs mt-2 uppercase">1 Hour</p>
+                </div>
+                <div class="text-4xl font-black text-white mb-6">
+                    ₹899<span class="text-sm font-normal text-slate-400 uppercase"> / Person</span>
+                </div>
+                <ul class="text-sm text-slate-300 space-y-4 mb-8 text-left border-t border-white/10 pt-6">
+                    <li class="flex items-center"><span class="w-1.5 h-1.5 bg-emerald-400 rounded-full mr-3"></span> Unlimited Game Swaps</li>
+                    <li class="flex items-center"><span class="w-1.5 h-1.5 bg-emerald-400 rounded-full mr-3"></span> Pro 4K Headsets</li>
+                    <li class="flex items-center"><span class="w-1.5 h-1.5 bg-emerald-400 rounded-full mr-3"></span> 10% Snack Discount</li>
+                </ul>
+                <button class="w-full py-4 bg-emerald-500 text-white font-black uppercase tracking-widest text-[10px] rounded-xl shadow-lg shadow-emerald-500/40 hover:bg-emerald-400 transition-all duration-300">
+                    Book Now
+                </button>
+            </div>
+
+            <div class="group relative p-8 rounded-3xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-white/10 hover:border-cyan-500/50 transition-all duration-500 text-center">
+                <div class="mb-6">
+                    <div class="w-12 h-1 bg-cyan-500 mx-auto mb-6 rounded-full"></div>
+                    <h3 class="text-xl font-bold text-slate-900 dark:text-white uppercase tracking-wider">Group Pack</h3>
+                    <p class="text-cyan-500 font-bold text-xs mt-2 uppercase">Max 6 People</p>
+                </div>
+                <div class="text-4xl font-black text-slate-900 dark:text-white mb-6">
+                    ₹3,999<span class="text-sm font-normal text-slate-500 uppercase"> / Group</span>
+                </div>
+                <ul class="text-sm text-slate-500 dark:text-slate-400 space-y-4 mb-8 text-left border-t border-slate-200 dark:border-white/5 pt-6">
+                    <li class="flex items-center"><span class="w-1.5 h-1.5 bg-cyan-500 rounded-full mr-3"></span> 1 Hour Full Arena</li>
+                    <li class="flex items-center"><span class="w-1.5 h-1.5 bg-cyan-500 rounded-full mr-3"></span> Multiplayer Games</li>
+                    <li class="flex items-center"><span class="w-1.5 h-1.5 bg-cyan-500 rounded-full mr-3"></span> Dedicated Master</li>
+                </ul>
+                <button class="w-full py-3 rounded-xl border-2 border-cyan-500 text-cyan-500 font-black uppercase tracking-widest text-[10px] group-hover:bg-cyan-500 group-hover:text-white transition-all duration-300">
+                    Book Now
+                </button>
+            </div>
+
+            <div class="group relative p-8 rounded-3xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-white/10 hover:border-emerald-500/50 transition-all duration-500 text-center">
+                <div class="mb-6">
+                    <div class="w-12 h-1 bg-emerald-500 mx-auto mb-6 rounded-full"></div>
+                    <h3 class="text-xl font-bold text-slate-900 dark:text-white uppercase tracking-wider">Birthday Bash</h3>
+                    <p class="text-emerald-500 font-bold text-xs mt-2 uppercase">2 Hours + Lounge</p>
+                </div>
+                <div class="text-4xl font-black text-slate-900 dark:text-white mb-6">
+                    Custom<span class="text-sm font-normal text-slate-500 uppercase"> / Event</span>
+                </div>
+                <ul class="text-sm text-slate-500 dark:text-slate-400 space-y-4 mb-8 text-left border-t border-slate-200 dark:border-white/5 pt-6">
+                    <li class="flex items-center"><span class="w-1.5 h-1.5 bg-emerald-500 rounded-full mr-3"></span> Private VR Lounge</li>
+                    <li class="flex items-center"><span class="w-1.5 h-1.5 bg-emerald-500 rounded-full mr-3"></span> VR Birthday Theme</li>
+                    <li class="flex items-center"><span class="w-1.5 h-1.5 bg-emerald-500 rounded-full mr-3"></span> Food & Drinks Inc.</li>
+                </ul>
+                <button class="w-full py-3 rounded-xl border-2 border-emerald-500 text-emerald-500 font-black uppercase tracking-widest text-[10px] group-hover:bg-emerald-500 group-hover:text-white transition-all duration-300">
+                    Contact Us
+                </button>
+            </div>
+
+        </div>
+    </div>
+</section>
+<section class="py-20 bg-white dark:bg-slate-950 transition-colors duration-500 overflow-hidden">
+    <div class="max-w-7xl mx-auto px-4 lg:px-8">
+        <div class="relative rounded-[2.5rem] bg-slate-900 border border-emerald-500/30 overflow-hidden shadow-2xl shadow-emerald-500/10">
+            
+            <div class="absolute -top-24 -right-24 w-96 h-96 bg-emerald-500/20 rounded-full blur-[100px] animate-pulse"></div>
+            <div class="absolute -bottom-24 -left-24 w-72 h-72 bg-cyan-500/20 rounded-full blur-[80px]"></div>
+
+            <div class="relative z-10 flex flex-col lg:flex-row items-center justify-between p-8 md:p-16 gap-12">
+                
+                <div class="w-full lg:w-3/5 text-center lg:text-left">
+                    <h2 class="text-emerald-400 font-bold uppercase tracking-[0.2em] text-xs mb-4">
+                        <i class="fa-solid fa-bolt-lightning mr-2"></i> Limited Slots Available
+                    </h2>
+                    <p class="text-4xl md:text-6xl font-black text-white uppercase italic tracking-tighter leading-tight mb-6">
+                        The Portal Is <span class="text-emerald-500">Open.</span> <br> 
+                        Don't Just Watch. <span class="gradient-text">Play.</span>
+                    </p>
+                    <p class="text-slate-400 text-lg mb-10 max-w-xl mx-auto lg:mx-0">
+                        Join thousands of players who have already stepped beyond the screen. Book your session now and experience the next generation of VR.
+                    </p>
+                    
+                    <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-6">
+                        <a href="booking.html" class="group relative px-10 py-5 bg-emerald-500 hover:bg-emerald-400 text-white font-black uppercase tracking-widest text-sm rounded-xl transition-all duration-300 shadow-lg shadow-emerald-500/40 overflow-hidden w-full sm:w-auto text-center">
+                            <span class="relative z-10 flex items-center justify-center">
+                                Claim Your Slot 
+                                <i class="fa-solid fa-arrow-right ml-3 group-hover:translate-x-2 transition-transform"></i>
+                            </span>
+                        </a>
+                        <div class="flex flex-col items-center lg:items-start">
+                            <div class="flex -space-x-3 mb-2">
+                                <img class="w-8 h-8 rounded-full border-2 border-slate-900" src="assets/t1" alt="">
+                                <img class="w-8 h-8 rounded-full border-2 border-slate-900" src="assets/t3" alt="">
+                                <img class="w-8 h-8 rounded-full border-2 border-slate-900" src="assets/t2" alt="">
+                            </div>
+                            <p class="text-[10px] text-slate-500 uppercase font-black tracking-widest">
+                                400+ Players booked today
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="w-full lg:w-2/5 flex justify-center lg:justify-end">
+                    <div class="relative group">
+                        <div class="absolute inset-0 border-2 border-emerald-500/20 rounded-full animate-[ping_3s_linear_infinite] scale-110"></div>
+                        
+                        <div class="relative bg-gradient-to-b from-emerald-500/20 to-transparent p-3 rounded-full backdrop-blur-sm border border-white/5 transform group-hover:rotate-6 transition-transform duration-500">
+                            <img src="assets/index cta" 
+                                 alt="VR Experience" 
+                                 class="w-64 h-64 md:w-80 md:h-80 object-cover rounded-full border-4 border-slate-900 shadow-2xl grayscale hover:grayscale-0 transition-all duration-700">
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+
+    <footer class="bg-white dark:bg-slate-900 pt-16 pb-8 border-t border-emerald-100 dark:border-white/5 transition-colors">
+        <div class="max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12 text-slate-600 dark:text-slate-400">
+            <div>
+                
+ <a href="index.html" class="flex-shrink-0">
+                <div class="flex items-center space-x-3 group cursor-pointer">
+                    <div class="relative">
+                        <div class="absolute -inset-1 bg-gradient-to-r from-emerald-500 to-cyan-500 rounded-full blur opacity-40 group-hover:opacity-100 transition duration-500"></div>
+                        <div class="relative bg-slate-900 rounded-lg p-2 flex items-center justify-center border border-white/10">
+                            <i class="fas fa-vr-cardboard text-2xl text-emerald-500 group-hover:text-cyan-400 transition-colors"></i>
+                        </div>
+                    </div>
+                    <div class="text-2xl font-black tracking-tighter italic uppercase">
+                        <span class="text-emerald-500">AVASA</span><span class="text-slate-900 dark:text-white transition-colors">VR</span>
+                    </div>
+                </div>
+            </a>                <p class="text-sm leading-relaxed">
+                    Elevating reality through cutting-edge technology. The premier VR arcade destination in Bangalore.
+                </p>
+                <div class="flex space-x-4 mt-6">
+                    <a href="#" class="hover:text-emerald-500 transition text-xl"><i class="fab fa-facebook"></i></a>
+                    <a href="#" class="hover:text-emerald-500 transition text-xl"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="hover:text-emerald-500 transition text-xl"><i class="fab fa-twitch"></i></a>
+                </div>
+            </div>
+            
+            <div class="w-full">
+    <h4 class="font-black mb-6 uppercase text-xs tracking-[0.2em] text-emerald-500 border-l-2 border-emerald-500 pl-3">
+        Navigation
+    </h4>
+    
+    <ul class="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-3 text-sm">
+        <li>
+            <a href="index.html" class="text-slate-500 dark:text-slate-400 hover:text-emerald-500 dark:hover:text-emerald-400 transition-colors duration-300 flex items-center group">
+                <span class="w-0 group-hover:w-2 h-[1px] bg-emerald-500 mr-0 group-hover:mr-2 transition-all"></span>
+                Home1
+            </a>
+        </li>
+        <li>
+            <a href="home2.html" class="text-slate-500 dark:text-slate-400 hover:text-emerald-500 dark:hover:text-emerald-400 transition-colors duration-300 flex items-center group">
+                <span class="w-0 group-hover:w-2 h-[1px] bg-emerald-500 mr-0 group-hover:mr-2 transition-all"></span>
+                Home2
+            </a>
+        </li>
+        <li>
+            <a href="booking.html" class="text-slate-500 dark:text-slate-400 hover:text-emerald-500 dark:hover:text-emerald-400 transition-colors duration-300 flex items-center group">
+                <span class="w-0 group-hover:w-2 h-[1px] bg-emerald-500 mr-0 group-hover:mr-2 transition-all"></span>
+                Book Now
+            </a>
+        </li>
+        <li>
+            <a href="services.html" class="text-slate-500 dark:text-slate-400 hover:text-emerald-500 dark:hover:text-emerald-400 transition-colors duration-300 flex items-center group">
+                <span class="w-0 group-hover:w-2 h-[1px] bg-emerald-500 mr-0 group-hover:mr-2 transition-all"></span>
+                Services
+            </a>
+        </li>
+        <li>
+            <a href="gallery.html" class="text-slate-500 dark:text-slate-400 hover:text-emerald-500 dark:hover:text-emerald-400 transition-colors duration-300 flex items-center group">
+                <span class="w-0 group-hover:w-2 h-[1px] bg-emerald-500 mr-0 group-hover:mr-2 transition-all"></span>
+                Gallery
+            </a>
+        </li>
+        <li>
+            <a href="about.html" class="text-slate-500 dark:text-slate-400 hover:text-emerald-500 dark:hover:text-emerald-400 transition-colors duration-300 flex items-center group">
+                <span class="w-0 group-hover:w-2 h-[1px] bg-emerald-500 mr-0 group-hover:mr-2 transition-all"></span>
+                About Us
+            </a>
+        </li>
+        <li>
+            <a href="contact.html" class="text-slate-500 dark:text-slate-400 hover:text-emerald-500 dark:hover:text-emerald-400 transition-colors duration-300 flex items-center group">
+                <span class="w-0 group-hover:w-2 h-[1px] bg-emerald-500 mr-0 group-hover:mr-2 transition-all"></span>
+                Contact
+            </a>
+        </li>
+        <li>
+            <a href="comingsoon.html" class="text-slate-500 dark:text-slate-400 hover:text-emerald-500 dark:hover:text-emerald-400 transition-colors duration-300 flex items-center group">
+                <span class="w-0 group-hover:w-2 h-[1px] bg-emerald-500 mr-0 group-hover:mr-2 transition-all"></span>
+                Coming Soon
+            </a>
+        </li>
+        <li class="sm:col-span-2 mt-2">
+            <a href="404.html" class="text-red-400/80 hover:text-red-400 hover:underline transition-all text-xs flex items-center">
+                <i class="fas fa-circle-exclamation mr-2"></i>
+                404 Error Page Demo
+            </a>
+        </li>
+    </ul>
+</div>
+
+            <div>
+                <h4 class="font-bold mb-4 uppercase text-xs tracking-widest text-emerald-500">Find Us</h4>
+                <ul class="space-y-3 text-sm">
+                    <li><i class="fas fa-location-arrow mr-2 text-emerald-500"></i> Bangalore, India</li>
+                    <li><i class="fas fa-envelope mr-2 text-emerald-500"></i> hello@avasavr.com</li>
+                </ul>
+            </div>
+
+            <div>
+                <h4 class="font-bold mb-4 uppercase text-xs tracking-widest text-emerald-500">Newsletter</h4>
+                <div class="flex mt-2">
+                    <input type="email" placeholder="Enter Email" class="bg-slate-100 dark:bg-black/30 border border-emerald-200 dark:border-white/10 rounded-l-lg px-4 py-2 w-full focus:outline-none focus:border-emerald-500">
+                    <button class="bg-emerald-500 text-white px-5 py-2 rounded-r-lg hover:bg-emerald-400 transition"><i class="fas fa-paper-plane"></i></button>
+                </div>
+            </div>
+        </div>
+        <div class="text-center text-xs text-slate-400 dark:text-slate-600 border-t border-emerald-50 dark:border-white/5 pt-8">
+            &copy; 2026 Avasa VR Arcade. Created with Emerald Energy.
+        </div>
+    </footer>
+
+    <script>
+        function toggleTheme() {
+            const html = document.documentElement;
+            if (html.classList.contains('dark')) {
+                html.classList.remove('dark');
+                localStorage.setItem('theme', 'light');
+            } else {
+                html.classList.add('dark');
+                localStorage.setItem('theme', 'dark');
+            }
+        }
+
+        function toggleDirection() {
+            const html = document.documentElement;
+            const newDir = html.dir === 'ltr' ? 'rtl' : 'ltr';
+            html.dir = newDir;
+            localStorage.setItem('dir', newDir);
+        }
+
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+            mobileMenu.classList.toggle('flex');
+        });
+
+        (function() {
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme === 'light') {
+                document.documentElement.classList.remove('dark');
+            } else {
+                document.documentElement.classList.add('dark');
+            }
+            if (localStorage.getItem('dir')) document.documentElement.dir = localStorage.getItem('dir');
+        })();
+    </script>
+</body>
+</html>
+

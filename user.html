@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en"> 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="assets/icons8-ar-64.png">
+    <title>AVASA VR | Command Center</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class'
+        }
+    </script>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap');
+        
+        body { font-family: 'Inter', sans-serif; transition: background-color 0.3s ease, color 0.3s ease; }
+        .gradient-text { background: linear-gradient(135deg, #10b981 0%, #06b6d4 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .tab-content { display: none; }
+        .tab-content.active { display: block; animation: fade-in 0.4s ease-out; }
+        
+        @keyframes fade-in { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 5px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        .dark ::-webkit-scrollbar-thumb { background: #1e293b; border-radius: 10px; }
+        ::-webkit-scrollbar-thumb { background: #e2e8f0; border-radius: 10px; }
+    </style>
+</head>
+<body class="bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100 min-h-screen">
+
+    <header class="lg:hidden flex items-center justify-between p-4 bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-white/10 sticky top-0 z-50">
+        <a href="index.html" class="text-xl font-black uppercase italic tracking-tighter">
+            AVASA<span class="text-emerald-500 italic">VR</span>
+        </a>
+        <button onclick="toggleMobileMenu()" class="w-10 h-10 flex items-center justify-center rounded-xl bg-slate-100 dark:bg-slate-800">
+            <i class="fas fa-bars-staggered text-slate-900 dark:text-white"></i>
+        </button>
+    </header>
+<br>
+<br>
+
+
+    <aside id="sidebar" class="fixed inset-y-0 left-0 z-50 w-64 bg-white dark:bg-slate-900 border-r border-slate-200 dark:border-white/5 transform -translate-x-full lg:translate-x-0 transition-transform duration-300 ease-in-out">
+        <div class="flex flex-col h-full p-6">
+            <a href="index.html" class="flex-shrink-0">
+                <div class="flex items-center space-x-3 group cursor-pointer">
+                    <div class="relative">
+                        <div class="absolute -inset-1 bg-gradient-to-r from-emerald-500 to-cyan-500 rounded-full blur opacity-40 group-hover:opacity-100 transition duration-500"></div>
+                        <div class="relative bg-slate-900 rounded-lg p-2 flex items-center justify-center border border-white/10">
+                            <i class="fas fa-vr-cardboard text-2xl text-emerald-500 group-hover:text-cyan-400 transition-colors"></i>
+                        </div>
+                    </div>
+                    <div class="text-2xl font-black tracking-tighter italic uppercase">
+                        <span class="text-emerald-500">AVASA</span><span class="text-slate-900 dark:text-white transition-colors">VR</span>
+                    </div>
+                </div>
+            </a>
+
+            <nav class="space-y-2 flex-1 overflow-y-auto">
+                <button onclick="switchTab('booking')" class="nav-link w-full flex items-center space-x-3 px-4 py-3 rounded-2xl bg-emerald-500 text-white font-bold text-sm transition-all" data-tab="booking">
+                    <i class="fas fa-calendar-plus w-5"></i> <span>Book Session</span>
+                </button>
+                <button onclick="switchTab('experiences')" class="nav-link w-full flex items-center space-x-3 px-4 py-3 rounded-2xl hover:bg-slate-100 dark:hover:bg-white/5 text-slate-500 dark:text-slate-400 font-bold text-sm transition-all" data-tab="experiences">
+                    <i class="fas fa-vr-cardboard w-5"></i> <span>VR Library</span>
+                </button>
+                <button onclick="switchTab('history')" class="nav-link w-full flex items-center space-x-3 px-4 py-3 rounded-2xl hover:bg-slate-100 dark:hover:bg-white/5 text-slate-500 dark:text-slate-400 font-bold text-sm transition-all" data-tab="history">
+                    <i class="fas fa-clock-rotate-left w-5"></i> <span>My Bookings</span>
+                </button>
+            </nav>
+
+            <div class="pt-6 border-t border-slate-200 dark:border-white/5 space-y-3">
+                <button onclick="toggleTheme()" class="w-full flex items-center justify-between px-4 py-3 bg-slate-100 dark:bg-slate-800 rounded-xl text-xs font-bold hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors">
+                    <span id="theme-text">Dark Mode</span>
+                    <i id="theme-icon" class="fas fa-moon"></i>
+                </button>
+                <button onclick="toggleDirection()" class="w-full flex items-center justify-between px-4 py-3 bg-slate-100 dark:bg-slate-800 rounded-xl text-xs font-bold hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors">
+                    <span>Layout Direction</span>
+                    <span id="dir-text" class="uppercase text-emerald-500">LTR</span>
+                </button>
+                
+                <button onclick="logoutUser()" class="w-full flex items-center space-x-3 px-4 py-3 rounded-xl bg-red-500/10 text-red-500 hover:bg-red-500 hover:text-white font-bold text-sm transition-all group">
+                    <i class="fas fa-sign-out-alt w-5 group-hover:translate-x-1 transition-transform"></i>
+                    <span>Log Out</span>
+                </button>
+            </div>
+        </div>
+    </aside>
+
+    <main class="lg:ml-64 p-4 md:p-8 lg:p-12 transition-all">
+    <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
+        <div class="group p-6 bg-white dark:bg-slate-900 rounded-[2rem] border border-slate-200 dark:border-white/5 shadow-sm hover:border-emerald-500/50 transition-all cursor-default">
+            <p class="text-[10px] font-black uppercase text-emerald-500 tracking-widest mb-1">Total XP</p>
+            <h4 class="text-2xl font-black italic group-hover:scale-110 transition-transform origin-left">14,250</h4>
+        </div>
+        <div class="group p-6 bg-white dark:bg-slate-900 rounded-[2rem] border border-slate-200 dark:border-white/5 shadow-sm hover:border-cyan-500/50 transition-all cursor-default">
+            <p class="text-[10px] font-black uppercase text-cyan-500 tracking-widest mb-1">Time Played</p>
+            <h4 class="text-2xl font-black italic group-hover:scale-110 transition-transform origin-left">42H</h4>
+        </div>
+        <div class="group p-6 bg-white dark:bg-slate-900 rounded-[2rem] border border-slate-200 dark:border-white/5 shadow-sm hover:border-purple-500/50 transition-all cursor-default">
+            <p class="text-[10px] font-black uppercase text-purple-500 tracking-widest mb-1">Rank</p>
+            <h4 class="text-2xl font-black italic group-hover:scale-110 transition-transform origin-left">VETERAN</h4>
+        </div>
+        <button class="p-6 bg-white dark:bg-slate-900 rounded-[2rem] border border-slate-200 dark:border-white/5 shadow-sm text-center flex items-center justify-center border-dashed hover:bg-emerald-500/5 hover:border-emerald-500/50 transition-all group">
+            <p class="text-[10px] font-black uppercase text-slate-400 group-hover:text-emerald-500 transition-colors">Add Credits <i class="fas fa-plus ml-1"></i></p>
+        </button>
+    </div>
+
+    <div id="booking" class="tab-content active space-y-8">
+        <div class="grid lg:grid-cols-3 gap-8">
+            <div class="lg:col-span-2 bg-white dark:bg-slate-900 rounded-[2.5rem] border border-slate-200 dark:border-white/5 p-8 shadow-xl relative overflow-hidden">
+                <div class="absolute top-0 right-0 p-8 opacity-10">
+                    <i class="fas fa-rocket text-8xl -rotate-12"></i>
+                </div>
+                <h2 class="text-3xl font-black uppercase italic tracking-tighter mb-4">Deploy to <span class="gradient-text">Station 01</span></h2>
+                <p class="text-slate-500 dark:text-slate-400 mb-8 max-w-md">Ready your gear. Station 01 is currently calibrated for Full-Body Tracking and Haptic Feedback experiences.</p>
+                
+                <div class="flex flex-wrap gap-4">
+                    <button class="px-8 py-4 bg-emerald-500 hover:bg-emerald-600 text-white rounded-2xl font-black uppercase italic tracking-widest text-sm transition-all shadow-lg shadow-emerald-500/20 active:scale-95">
+                        Initialize Session
+                    </button>
+                    <button class="px-8 py-4 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 rounded-2xl font-black uppercase italic tracking-widest text-sm transition-all">
+                        Schedule Future
+                    </button>
+                </div>
+            </div>
+
+            <div class="bg-white dark:bg-slate-900 rounded-[2.5rem] border border-slate-200 dark:border-white/5 p-8 shadow-xl">
+                <h3 class="text-xs font-black uppercase tracking-[0.2em] mb-6 text-slate-400">System Status</h3>
+                <div class="space-y-6">
+                    <div class="flex items-center justify-between">
+                        <span class="text-sm font-bold">Neural Link</span>
+                        <span class="flex h-2 w-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                    </div>
+                    <div class="flex items-center justify-between">
+                        <span class="text-sm font-bold">Latency</span>
+                        <span class="text-xs font-mono text-emerald-500">12ms</span>
+                    </div>
+                    <div class="w-full bg-slate-100 dark:bg-slate-800 h-1 rounded-full overflow-hidden">
+                        <div class="bg-emerald-500 h-full w-[85%]"></div>
+                    </div>
+                    <p class="text-[10px] text-slate-500 leading-relaxed uppercase">Signal strength optimal. All haptic nodes reporting 100% efficiency.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="experiences" class="tab-content">
+        <div class="flex items-center justify-between mb-8">
+            <h2 class="text-3xl font-black uppercase italic tracking-tighter">Game <span class="gradient-text">Library</span></h2>
+            <div class="flex space-x-2">
+                <button class="w-10 h-10 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-white/10 flex items-center justify-center text-xs"><i class="fas fa-filter"></i></button>
+                <button class="w-10 h-10 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-white/10 flex items-center justify-center text-xs"><i class="fas fa-search"></i></button>
+            </div>
+        </div>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div class="group relative bg-slate-200 dark:bg-slate-800 rounded-[2rem] aspect-[4/5] overflow-hidden cursor-pointer">
+                <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent z-10 opacity-80"></div>
+                <img src="assets/index cta" class="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" alt="Cyberpunk">
+                <div class="absolute bottom-0 left-0 p-8 z-20">
+                    <span class="px-3 py-1 bg-emerald-500 text-[8px] font-black uppercase rounded-full mb-2 inline-block">Action</span>
+                    <h3 class="text-xl font-black text-white uppercase italic">Neon Protocol</h3>
+                    <p class="text-white/60 text-xs mt-2 opacity-0 group-hover:opacity-100 transition-opacity">Enter the mainframe and bypass city security.</p>
+                </div>
+            </div>
+            <div class="group relative bg-slate-200 dark:bg-slate-800 rounded-[2rem] aspect-[4/5] overflow-hidden cursor-pointer">
+                <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent z-10 opacity-80"></div>
+                <img src="assets/Adventures" class="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" alt="Space">
+                <div class="absolute bottom-0 left-0 p-8 z-20">
+                    <span class="px-3 py-1 bg-cyan-500 text-[8px] font-black uppercase rounded-full mb-2 inline-block">Exploration</span>
+                    <h3 class="text-xl font-black text-white uppercase italic">Void Walker</h3>
+                    <p class="text-white/60 text-xs mt-2 opacity-0 group-hover:opacity-100 transition-opacity">Survive the silence of deep space orbit.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="history" class="tab-content">
+        <h2 class="text-3xl font-black uppercase italic tracking-tighter mb-8">Mission <span class="gradient-text">Logs</span></h2>
+        <div class="bg-white dark:bg-slate-900 rounded-[2.5rem] border border-slate-200 dark:border-white/5 overflow-hidden shadow-xl">
+            <table class="w-full text-left border-collapse">
+                <thead class="bg-slate-50 dark:bg-white/5">
+                    <tr>
+                        <th class="p-6 text-[10px] font-black uppercase tracking-widest text-slate-400">Date</th>
+                        <th class="p-6 text-[10px] font-black uppercase tracking-widest text-slate-400">Mission</th>
+                        <th class="p-6 text-[10px] font-black uppercase tracking-widest text-slate-400">XP Earned</th>
+                        <th class="p-6 text-[10px] font-black uppercase tracking-widest text-slate-400">Status</th>
+                    </tr>
+                </thead>
+                <tbody class="divide-y divide-slate-100 dark:divide-white/5">
+                    <tr class="hover:bg-slate-50 dark:hover:bg-white/5 transition-colors cursor-default">
+                        <td class="p-6 text-sm font-bold">OCT 24, 2026</td>
+                        <td class="p-6 text-sm italic uppercase font-black">Neon Protocol</td>
+                        <td class="p-6 text-sm text-emerald-500 font-mono">+1,200</td>
+                        <td class="p-6"><span class="px-3 py-1 bg-emerald-500/10 text-emerald-500 text-[10px] font-bold rounded-lg uppercase">Success</span></td>
+                    </tr>
+                    <tr class="hover:bg-slate-50 dark:hover:bg-white/5 transition-colors cursor-default">
+                        <td class="p-6 text-sm font-bold">OCT 21, 2026</td>
+                        <td class="p-6 text-sm italic uppercase font-black">Void Walker</td>
+                        <td class="p-6 text-sm text-emerald-500 font-mono">+850</td>
+                        <td class="p-6"><span class="px-3 py-1 bg-emerald-500/10 text-emerald-500 text-[10px] font-bold rounded-lg uppercase">Success</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</main>
+
+    <script>
+        // 1. Initial State (Runs immediately)
+        (function init() {
+            const savedTheme = localStorage.getItem('theme') || 'dark';
+            const savedDir = localStorage.getItem('dir') || 'ltr';
+            
+            // Set Dark/Light Class
+            if (savedTheme === 'dark') {
+                document.documentElement.classList.add('dark');
+            } else {
+                document.documentElement.classList.remove('dark');
+            }
+            
+            // Set Direction
+            document.documentElement.dir = savedDir;
+
+            // Sync UI Elements when DOM loads
+            window.addEventListener('DOMContentLoaded', () => {
+                updateThemeUI(savedTheme);
+                const dirText = document.getElementById('dir-text');
+                if (dirText) dirText.innerText = savedDir.toUpperCase();
+            });
+        })();
+
+        // 2. Toggle Theme Action
+        function toggleTheme() {
+            const html = document.documentElement;
+            let theme;
+
+            if (html.classList.contains('dark')) {
+                html.classList.remove('dark');
+                theme = 'light';
+            } else {
+                html.classList.add('dark');
+                theme = 'dark';
+            }
+
+            localStorage.setItem('theme', theme);
+            updateThemeUI(theme);
+        }
+
+        // 3. Update Icon and Text
+        function updateThemeUI(theme) {
+            const icon = document.getElementById('theme-icon');
+            const text = document.getElementById('theme-text');
+            
+            if (!icon || !text) return;
+
+            if (theme === 'dark') {
+                icon.className = 'fas fa-moon';
+                text.innerText = 'Dark Mode';
+            } else {
+                icon.className = 'fas fa-sun';
+                text.innerText = 'Light Mode';
+            }
+        }
+
+        // 4. Toggle Layout Direction
+        function toggleDirection() {
+            const html = document.documentElement;
+            const newDir = html.dir === 'rtl' ? 'ltr' : 'rtl';
+            
+            html.dir = newDir;
+            localStorage.setItem('dir', newDir);
+            
+            const dirText = document.getElementById('dir-text');
+            if (dirText) dirText.innerText = newDir.toUpperCase();
+        }
+
+        // 5. Navigation Tabs
+        function switchTab(tabId) {
+            document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.classList.remove('bg-emerald-500', 'text-white');
+                link.classList.add('hover:bg-slate-100', 'dark:hover:bg-white/5', 'text-slate-500', 'dark:text-slate-400');
+            });
+
+            const target = document.getElementById(tabId);
+            if(target) target.classList.add('active');
+
+            const btn = document.querySelector(`[data-tab="${tabId}"]`);
+            if(btn) {
+                btn.classList.remove('hover:bg-slate-100', 'dark:hover:bg-white/5', 'text-slate-500', 'dark:text-slate-400');
+                btn.classList.add('bg-emerald-500', 'text-white');
+            }
+
+            if (window.innerWidth < 1024) toggleMobileMenu();
+        }
+
+        // 6. Sidebar Mobile Toggle
+        function toggleMobileMenu() {
+            const sidebar = document.getElementById('sidebar');
+            if (sidebar) sidebar.classList.toggle('-translate-x-full');
+        }
+
+        function logoutUser() {
+            if(confirm("Terminate session and return to base?")) {
+                window.location.href = "index.html"; 
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en" class="dark" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="assets/icons8-ar-64.png">
+    <title>404 | Connection Lost - Avasa VR</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+        }
+    </script>
+    <style>
+        .gradient-text { @apply bg-clip-text text-transparent bg-gradient-to-r from-emerald-500 to-cyan-500; }
+        
+        /* Glitch Animation */
+        @keyframes glitch {
+            0% { transform: translate(0); }
+            20% { transform: translate(-2px, 2px); }
+            40% { transform: translate(-2px, -2px); }
+            60% { transform: translate(2px, 2px); }
+            80% { transform: translate(2px, -2px); }
+            100% { transform: translate(0); }
+        }
+        .glitch-effect { animation: glitch 0.3s cubic-bezier(.25,.46,.45,.94) infinite; }
+    </style>
+    <script>
+        // Pre-load preferences to avoid flicker
+        if (localStorage.getItem('theme') === 'light') document.documentElement.classList.remove('dark');
+        else document.documentElement.classList.add('dark');
+
+        if (localStorage.getItem('direction') === 'rtl') document.documentElement.setAttribute('dir', 'rtl');
+        else document.documentElement.setAttribute('dir', 'ltr');
+    </script>
+</head>
+<body class="bg-slate-50 dark:bg-slate-950 transition-colors duration-500 min-h-screen flex flex-col items-center justify-center overflow-hidden">
+
+    <nav class="fixed top-0 w-full z-50 p-6">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <a href="index.html" class="flex items-center space-x-3 group">
+                <div class="bg-slate-900 rounded-lg p-2 border border-white/10">
+                    <i class="fas fa-vr-cardboard text-xl text-emerald-500"></i>
+                </div>
+                <span class="text-xl font-black uppercase italic dark:text-white">Avasa<span class="text-emerald-500 transition-colors">VR</span></span>
+            </a>
+
+            <div class="flex items-center space-x-3">
+                <button onclick="toggleTheme()" class="p-3 rounded-xl bg-white dark:bg-slate-900 shadow-xl border border-slate-200 dark:border-white/10 transition-transform active:scale-95">
+                    <i class="fas fa-moon dark:hidden text-slate-600"></i>
+                    <i class="fas fa-sun hidden dark:block text-emerald-400"></i>
+                </button>
+                <button onclick="toggleDirection()" class="px-4 py-2 rounded-xl bg-white dark:bg-slate-900 shadow-lg border border-slate-200 dark:border-white/10 text-[10px] font-black uppercase tracking-widest dark:text-white transition-transform active:scale-95">
+                    LTR/RTL
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <main class="relative z-10 text-center px-4">
+        <h1 class="text-[120px] md:text-[200px] font-black text-slate-900/10 dark:text-white/5 leading-none absolute inset-0 -z-10 flex items-center justify-center select-none uppercase italic">
+            404
+        </h1>
+
+        <div class="space-y-6">
+            <div class="relative inline-block">
+                <i class="fa-solid fa-triangle-exclamation text-6xl text-red-500 glitch-effect"></i>
+            </div>
+            
+            <h2 class="text-4xl md:text-6xl font-black text-slate-900 dark:text-white uppercase italic tracking-tighter leading-tight">
+                Connection <span class="gradient-text">Lost</span>
+            </h2>
+            
+            <p class="text-slate-500 dark:text-slate-400 max-w-md mx-auto text-sm md:text-base font-medium tracking-wide">
+                You've reached the edge of the multiverse. The coordinates you requested do not exist in this reality.
+            </p>
+
+            <div class="pt-8">
+                <a href="index.html" class="inline-flex items-center px-8 py-4 bg-emerald-500 hover:bg-emerald-400 text-white font-black uppercase tracking-widest text-xs rounded-xl shadow-lg shadow-emerald-500/30 transition-all transform hover:-translate-y-1 active:scale-95">
+                    <i class="fas fa-arrow-left mr-3"></i> Return to Reality
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <div class="absolute top-1/2 left-1/4 w-64 h-64 bg-emerald-500/10 rounded-full blur-[100px] -z-10 animate-pulse"></div>
+    <div class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-cyan-500/10 rounded-full blur-[120px] -z-10"></div>
+
+    <script>
+        // --- Theme Toggle ---
+        function toggleTheme() {
+            const html = document.documentElement;
+            if (html.classList.contains('dark')) {
+                html.classList.remove('dark');
+                localStorage.setItem('theme', 'light');
+            } else {
+                html.classList.add('dark');
+                localStorage.setItem('theme', 'dark');
+            }
+        }
+
+        // --- Direction Toggle ---
+        function toggleDirection() {
+            const html = document.documentElement;
+            const currentDir = html.getAttribute('dir');
+            const newDir = currentDir === 'ltr' ? 'rtl' : 'ltr';
+            html.setAttribute('dir', newDir);
+            localStorage.setItem('direction', newDir);
+        }
+    </script>
+</body>
+</html>
