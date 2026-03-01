@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="assets/icons8-ar-64.png">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'><path fill='%2310b981' d='M352 256c0 22.2-1.2 43.6-3.3 64H163.3c-2.2-20.4-3.3-41.8-3.3-64s1.2-43.6 3.3-64h185.4c2.2 20.4 3.3 41.8 3.3 64zm28.8-64h74.7c.9 21 1.5 42.4 1.5 64s-.7 43-1.5 64h-74.7c2.3-20.5 3.5-41.9 3.5-64s-1.2-43.5-3.5-64zm-33.8-8.7c-12.4-52.1-32.2-94.2-56-119.3 35.8 11.1 67.2 32.3 89.7 60.1-13 19.5-24.6 39.5-33.7 59.2zM256 32c25.4 0 49.3 37.1 63.5 96H192.5c14.2-58.9 38.1-96 63.5-96zM163.7 52.8c22.5-27.8 53.9-49 89.7-60.1-23.8 25.1-43.6 67.2-56 119.3-9.1-19.7-20.7-39.7-33.7-59.2zm-77.4 139.2h74.7c-2.3 20.5-3.5 41.9-3.5 64s1.2 43.5 3.5 64H86.3c-.9-21-1.5-42.4-1.5-64s.7-43 1.5-64zm33.8 136.7c12.4 52.1 32.2 94.2 56 119.3-35.8-11.1-67.2-32.3-89.7-60.1 13-19.5 24.6-39.5 33.7-59.2zm138.5 131.3c-25.4 0-49.3-37.1-63.5-96h127.1c-14.2 58.9-38.1 96-63.6 96zm112.4-12c-22.5 27.8-53.9 49-89.7 60.1 23.8-25.1 43.6-67.2 56-119.3 9.1 19.7 20.7 39.7 33.7 59.2z'/></svg>">
     <title>Avasa VR | Step Into Another Reality</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
@@ -58,9 +58,10 @@
                             <i class="fas fa-vr-cardboard text-2xl text-emerald-500 group-hover:text-cyan-400 transition-colors"></i>
                         </div>
                     </div>
-                    <div class="text-2xl font-black tracking-tighter italic uppercase">
-                        <span class="text-emerald-500">AVASA</span><span class="text-slate-900 dark:text-white transition-colors">VR</span>
-                    </div>
+                    <div class="text-2xl font-black tracking-tighter italic uppercase flex items-center">
+    <span class="text-emerald-500">AVASA</span>
+    <span class="ml-2 text-slate-900 dark:text-white transition-colors">VR</span>
+</div>
                 </div>
             </a>
 
@@ -297,20 +298,21 @@ navLinks.forEach(link => {
             Multiplayer VR games, thrilling adventures & unforgettable experiences.
         </p>
         
-        <div class="flex flex-col sm:flex-row gap-6 justify-center">
-            <a href="booking.html">
-                 <button class="neon-btn bg-emerald-500 hover:bg-emerald-400 text-white px-10 py-5 rounded-xl font-bold text-xl transition-all flex items-center justify-center shadow-lg shadow-emerald-500/20">
-                <i class="fas fa-ticket-alt mr-3"></i> Book Now
-            </button>
-            </a>
-           
-            <a href="services.html">
-                <button class="bg-slate-900/10 dark:bg-white/10 hover:bg-slate-900/20 dark:hover:bg-white/20 border border-slate-900/20 dark:border-emerald-400/30 backdrop-blur-md text-slate-900 dark:text-emerald-50 px-10 py-5 rounded-xl font-bold text-xl transition-all">
-                Explore Games
-            </button>
-            </a>
-            
-        </div>
+        <div class="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center items-stretch sm:items-center w-full max-w-md sm:max-w-none mx-auto px-4 sm:px-0">
+    
+    <a href="booking.html" class="w-full sm:w-auto">
+        <button class="w-full sm:w-auto neon-btn bg-emerald-500 hover:bg-emerald-400 text-white px-8 py-4 sm:px-10 sm:py-5 rounded-2xl font-black uppercase italic tracking-widest text-lg transition-all flex items-center justify-center shadow-xl shadow-emerald-500/25 active:scale-95">
+            <i class="fas fa-ticket-alt mr-3"></i> Book Now
+        </button>
+    </a>
+    
+    <a href="services.html" class="w-full sm:w-auto">
+        <button class="w-full sm:w-auto bg-emerald-50/50 dark:bg-white/5 hover:bg-emerald-100 dark:hover:bg-white/10 border-2 border-emerald-100 dark:border-white/10 backdrop-blur-xl text-emerald-700 dark:text-emerald-50 px-8 py-4 sm:px-10 sm:py-5 rounded-2xl font-black uppercase italic tracking-widest text-lg transition-all flex items-center justify-center active:scale-95">
+            Explore Games
+        </button>
+    </a>
+    
+</div>
     </div>
 </section>
 
@@ -1060,7 +1062,7 @@ navLinks.forEach(link => {
     }
 </style>
 
-    <footer class="bg-white dark:bg-slate-900 pt-16 pb-8 border-t border-emerald-100 dark:border-white/5 transition-colors">
+    <!-- <footer class="bg-white dark:bg-slate-900 pt-16 pb-8 border-t border-emerald-100 dark:border-white/5 transition-colors">
         <div class="max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12 text-slate-600 dark:text-slate-400">
             <div>
                 
@@ -1072,9 +1074,10 @@ navLinks.forEach(link => {
                             <i class="fas fa-vr-cardboard text-2xl text-emerald-500 group-hover:text-cyan-400 transition-colors"></i>
                         </div>
                     </div>
-                    <div class="text-2xl font-black tracking-tighter italic uppercase">
-                        <span class="text-emerald-500">AVASA</span><span class="text-slate-900 dark:text-white transition-colors">VR</span>
-                    </div>
+                    <div class="text-2xl font-black tracking-tighter italic uppercase flex items-center">
+    <span class="text-emerald-500">AVASA</span>
+    <span class="ml-2 text-slate-900 dark:text-white transition-colors">VR</span>
+</div>
                 </div>
             </a>                <p class="text-sm leading-relaxed">
                     Elevating reality through cutting-edge technology. The premier VR arcade destination in Bangalore.
@@ -1168,7 +1171,110 @@ navLinks.forEach(link => {
         <div class="text-center text-xs text-slate-400 dark:text-slate-600 border-t border-emerald-50 dark:border-white/5 pt-8">
             &copy; 2026 Avasa VR Arcade. Created with Emerald Energy.
         </div>
-    </footer>
+    </footer> -->
+<footer class="bg-white dark:bg-slate-900 pt-16 pb-8 border-t border-emerald-100 dark:border-white/5 transition-colors">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8 mb-16 text-slate-600 dark:text-slate-400">
+            
+            <div class="flex flex-col items-center md:items-start space-y-6">
+                <a href="index.html" class="flex-shrink-0 group">
+                    <div class="flex items-center space-x-3 cursor-pointer">
+                        <div class="relative">
+                            <div class="absolute -inset-1 bg-gradient-to-r from-emerald-500 to-cyan-500 rounded-full blur opacity-40 group-hover:opacity-100 transition duration-500"></div>
+                            <div class="relative bg-slate-900 rounded-lg p-2 flex items-center justify-center border border-white/10">
+                                <i class="fas fa-vr-cardboard text-2xl text-emerald-500 group-hover:text-cyan-400 transition-colors"></i>
+                            </div>
+                        </div>
+                        <div class="text-2xl font-black tracking-tighter italic uppercase flex items-center">
+                            <span class="text-emerald-500">AVASA</span>
+                            <span class="ml-2 text-slate-900 dark:text-white transition-colors">VR</span>
+                        </div>
+                    </div>
+                </a>
+                <p class="text-sm leading-relaxed text-center md:text-left max-w-xs">
+                    Elevating reality through cutting-edge technology. The premier VR arcade destination in Bangalore.
+                </p>
+                <div class="flex space-x-5">
+                    <a href="#" class="hover:text-emerald-500 transition-all text-xl hover:-translate-y-1"><i class="fab fa-facebook"></i></a>
+                    <a href="#" class="hover:text-emerald-500 transition-all text-xl hover:-translate-y-1"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="hover:text-emerald-500 transition-all text-xl hover:-translate-y-1"><i class="fab fa-twitch"></i></a>
+                </div>
+            </div>
+            
+          <div class="flex flex-row flex-nowrap items-start justify-between gap-4 sm:gap-8 w-full">
+    
+    <div class="flex-1 min-w-0">
+        <h4 class="font-black mb-4 uppercase text-[9px] sm:text-[10px] tracking-[0.1em] sm:tracking-[0.2em] text-emerald-500 border-l-2 border-emerald-500 pl-2">
+            Mission
+        </h4>
+        <ul class="grid grid-cols-1 gap-x-2 gap-y-2 text-[11px] sm:text-sm">
+            <li><a href="index.html" class="hover:text-emerald-500 transition-colors flex items-center group whitespace-nowrap">
+                <span class="hidden sm:inline w-0 group-hover:w-2 h-[1px] bg-emerald-500 mr-0 group-hover:mr-2 transition-all"></span>Home1</a>
+            </li>
+             <li><a href="home2.html" class="hover:text-emerald-500 transition-colors flex items-center group whitespace-nowrap">
+                <span class="hidden sm:inline w-0 group-hover:w-2 h-[1px] bg-emerald-500 mr-0 group-hover:mr-2 transition-all"></span>Home2</a>
+            </li>
+            <li><a href="booking.html" class="hover:text-emerald-500 transition-colors flex items-center group whitespace-nowrap">
+                <span class="hidden sm:inline w-0 group-hover:w-2 h-[1px] bg-emerald-500 mr-0 group-hover:mr-2 transition-all"></span>Book</a>
+            </li>
+            <li><a href="services.html" class="hover:text-emerald-500 transition-colors flex items-center group whitespace-nowrap">
+                <span class="hidden sm:inline w-0 group-hover:w-2 h-[1px] bg-emerald-500 mr-0 group-hover:mr-2 transition-all"></span>Service</a>
+            </li>
+            <li><a href="pricing.html" class="hover:text-emerald-500 transition-colors flex items-center group whitespace-nowrap">
+                <span class="hidden sm:inline w-0 group-hover:w-2 h-[1px] bg-emerald-500 mr-0 group-hover:mr-2 transition-all"></span>pricing</a>
+            </li>
+        </ul>
+    </div>
+
+    <div class="flex-1 min-w-0">
+        <h4 class="font-black mb-4 uppercase text-[9px] sm:text-[10px] tracking-[0.1em] sm:tracking-[0.2em] text-cyan-500 border-l-2 border-cyan-500 pl-2">
+            System
+        </h4>
+        <ul class="grid grid-cols-1 gap-x-2 gap-y-2 text-[11px] sm:text-sm">
+            <li><a href="about.html" class="hover:text-emerald-500 transition-colors flex items-center group whitespace-nowrap">
+                <span class="hidden sm:inline w-0 group-hover:w-2 h-[1px] bg-emerald-500 mr-0 group-hover:mr-2 transition-all"></span>About</a>
+            </li>
+            <li><a href="contact.html" class="hover:text-emerald-500 transition-colors flex items-center group whitespace-nowrap">
+                <span class="hidden sm:inline w-0 group-hover:w-2 h-[1px] bg-emerald-500 mr-0 group-hover:mr-2 transition-all"></span>Contact</a>
+            </li>
+            <li><a href="gallery.html" class="hover:text-emerald-500 transition-colors flex items-center group whitespace-nowrap">
+                <span class="hidden sm:inline w-0 group-hover:w-2 h-[1px] bg-emerald-500 mr-0 group-hover:mr-2 transition-all"></span>Gallery</a>
+            </li>
+            <li><a href="404.html" class="hover:text-emerald-500 transition-colors flex items-center group whitespace-nowrap">
+                <span class="hidden sm:inline w-0 group-hover:w-2 h-[1px] bg-emerald-500 mr-0 group-hover:mr-2 transition-all"></span>404</a>
+            </li>
+             <li><a href="comingsoon.html" class="hover:text-emerald-500 transition-colors flex items-center group whitespace-nowrap">
+                <span class="hidden sm:inline w-0 group-hover:w-2 h-[1px] bg-emerald-500 mr-0 group-hover:mr-2 transition-all"></span>ComingSoon</a>
+            </li>
+        </ul>
+    </div>
+
+</div>
+
+            <div class="flex flex-col items-start">
+                <h4 class="font-black mb-6 uppercase text-xs tracking-[0.2em] text-emerald-500 border-l-2 border-emerald-500 pl-3">Find Us</h4>
+                <ul class="space-y-4 text-sm">
+                    <li class="flex items-start"><i class="fas fa-map-marker-alt mt-1 mr-3 text-emerald-500"></i> <span>HSR Layout, Sector 7<br>Bangalore, KA 560102</span></li>
+                    <li class="flex items-center"><i class="fas fa-envelope mr-3 text-emerald-500"></i> hello@avasavr.com</li>
+                    <li class="flex items-center"><i class="fas fa-phone-alt mr-3 text-emerald-500"></i> +91 80 1234 5678</li>
+                </ul>
+            </div>
+
+            <div class="flex flex-col items-start">
+                <h4 class="font-black mb-6 uppercase text-xs tracking-[0.2em] text-emerald-500 border-l-2 border-emerald-500 pl-3">Stay Updated</h4>
+                <p class="text-xs mb-4">Get early access to new game launches.</p>
+                <div class="flex w-full max-w-sm">
+                    <input type="email" placeholder="Email" class="bg-slate-100 dark:bg-white/5 border border-emerald-200 dark:border-white/10 rounded-l-xl px-4 py-3 w-full focus:outline-none focus:border-emerald-500 text-sm">
+                    <button class="bg-emerald-500 text-white px-5 rounded-r-xl hover:bg-emerald-400 transition-all flex items-center justify-center"><i class="fas fa-paper-plane"></i></button>
+                </div>
+            </div>
+        </div>
+
+        <div class="text-center text-[10px] font-bold uppercase tracking-widest text-slate-400 dark:text-slate-600 border-t border-slate-100 dark:border-white/5 pt-10 pb-4">
+            &copy; 2026 Avasa VR Arcade. All Systems Operational.
+        </div>
+    </div>
+</footer>
 
     <script>
         function toggleTheme() {

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="assets/icons8-ar-64.png">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'><path fill='%2310b981' d='M352 256c0 22.2-1.2 43.6-3.3 64H163.3c-2.2-20.4-3.3-41.8-3.3-64s1.2-43.6 3.3-64h185.4c2.2 20.4 3.3 41.8 3.3 64zm28.8-64h74.7c.9 21 1.5 42.4 1.5 64s-.7 43-1.5 64h-74.7c2.3-20.5 3.5-41.9 3.5-64s-1.2-43.5-3.5-64zm-33.8-8.7c-12.4-52.1-32.2-94.2-56-119.3 35.8 11.1 67.2 32.3 89.7 60.1-13 19.5-24.6 39.5-33.7 59.2zM256 32c25.4 0 49.3 37.1 63.5 96H192.5c14.2-58.9 38.1-96 63.5-96zM163.7 52.8c22.5-27.8 53.9-49 89.7-60.1-23.8 25.1-43.6 67.2-56 119.3-9.1-19.7-20.7-39.7-33.7-59.2zm-77.4 139.2h74.7c-2.3 20.5-3.5 41.9-3.5 64s1.2 43.5 3.5 64H86.3c-.9-21-1.5-42.4-1.5-64s.7-43 1.5-64zm33.8 136.7c12.4 52.1 32.2 94.2 56 119.3-35.8-11.1-67.2-32.3-89.7-60.1 13-19.5 24.6-39.5 33.7-59.2zm138.5 131.3c-25.4 0-49.3-37.1-63.5-96h127.1c-14.2 58.9-38.1 96-63.6 96zm112.4-12c-22.5 27.8-53.9 49-89.7 60.1 23.8-25.1 43.6-67.2 56-119.3 9.1 19.7 20.7 39.7 33.7 59.2z'/></svg>">
     <title>AVASA VR | Command Center</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -34,7 +34,10 @@
 
     <header class="lg:hidden flex items-center justify-between p-4 bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-white/10 sticky top-0 z-50">
         <a href="index.html" class="text-xl font-black uppercase italic tracking-tighter">
-            AVASA<span class="text-emerald-500 italic">VR</span>
+          <div class="text-2xl font-black tracking-tighter italic uppercase flex items-center">
+    <span class="text-emerald-500">AVASA</span>
+    <span class="ml-2 text-slate-900 dark:text-white transition-colors">VR</span>
+</div>
         </a>
         <button onclick="toggleMobileMenu()" class="w-10 h-10 flex items-center justify-center rounded-xl bg-slate-100 dark:bg-slate-800">
             <i class="fas fa-bars-staggered text-slate-900 dark:text-white"></i>
@@ -54,9 +57,10 @@
                             <i class="fas fa-vr-cardboard text-2xl text-emerald-500 group-hover:text-cyan-400 transition-colors"></i>
                         </div>
                     </div>
-                    <div class="text-2xl font-black tracking-tighter italic uppercase">
-                        <span class="text-emerald-500">AVASA</span><span class="text-slate-900 dark:text-white transition-colors">VR</span>
-                    </div>
+                   <div class="text-2xl font-black tracking-tighter italic uppercase flex items-center">
+    <span class="text-emerald-500">AVASA</span>
+    <span class="ml-2 text-slate-900 dark:text-white transition-colors">VR</span>
+</div>
                 </div>
             </a>
 
@@ -182,31 +186,50 @@
     <div id="history" class="tab-content">
         <h2 class="text-3xl font-black uppercase italic tracking-tighter mb-8">Mission <span class="gradient-text">Logs</span></h2>
         <div class="bg-white dark:bg-slate-900 rounded-[2.5rem] border border-slate-200 dark:border-white/5 overflow-hidden shadow-xl">
-            <table class="w-full text-left border-collapse">
-                <thead class="bg-slate-50 dark:bg-white/5">
-                    <tr>
-                        <th class="p-6 text-[10px] font-black uppercase tracking-widest text-slate-400">Date</th>
-                        <th class="p-6 text-[10px] font-black uppercase tracking-widest text-slate-400">Mission</th>
-                        <th class="p-6 text-[10px] font-black uppercase tracking-widest text-slate-400">XP Earned</th>
-                        <th class="p-6 text-[10px] font-black uppercase tracking-widest text-slate-400">Status</th>
-                    </tr>
-                </thead>
-                <tbody class="divide-y divide-slate-100 dark:divide-white/5">
-                    <tr class="hover:bg-slate-50 dark:hover:bg-white/5 transition-colors cursor-default">
-                        <td class="p-6 text-sm font-bold">OCT 24, 2026</td>
-                        <td class="p-6 text-sm italic uppercase font-black">Neon Protocol</td>
-                        <td class="p-6 text-sm text-emerald-500 font-mono">+1,200</td>
-                        <td class="p-6"><span class="px-3 py-1 bg-emerald-500/10 text-emerald-500 text-[10px] font-bold rounded-lg uppercase">Success</span></td>
-                    </tr>
-                    <tr class="hover:bg-slate-50 dark:hover:bg-white/5 transition-colors cursor-default">
-                        <td class="p-6 text-sm font-bold">OCT 21, 2026</td>
-                        <td class="p-6 text-sm italic uppercase font-black">Void Walker</td>
-                        <td class="p-6 text-sm text-emerald-500 font-mono">+850</td>
-                        <td class="p-6"><span class="px-3 py-1 bg-emerald-500/10 text-emerald-500 text-[10px] font-bold rounded-lg uppercase">Success</span></td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
+    <div class="overflow-x-auto custom-scrollbar">
+        <table class="w-full text-left border-collapse min-w-[600px]">
+            <thead class="bg-slate-50 dark:bg-white/5">
+                <tr>
+                    <th class="p-6 text-[10px] font-black uppercase tracking-widest text-slate-400">Date</th>
+                    <th class="p-6 text-[10px] font-black uppercase tracking-widest text-slate-400">Mission</th>
+                    <th class="p-6 text-[10px] font-black uppercase tracking-widest text-slate-400">XP Earned</th>
+                    <th class="p-6 text-[10px] font-black uppercase tracking-widest text-slate-400 text-right">Status</th>
+                </tr>
+            </thead>
+            <tbody class="divide-y divide-slate-100 dark:divide-white/5">
+                <tr class="hover:bg-slate-50 dark:hover:bg-white/5 transition-colors cursor-default group">
+                    <td class="p-6 text-sm font-bold whitespace-nowrap">OCT 24, 2026</td>
+                    <td class="p-6 text-sm italic uppercase font-black whitespace-nowrap group-hover:text-emerald-500 transition-colors">Neon Protocol</td>
+                    <td class="p-6 text-sm text-emerald-500 font-mono">+1,200</td>
+                    <td class="p-6 text-right">
+                        <span class="px-3 py-1 bg-emerald-500/10 text-emerald-500 text-[10px] font-bold rounded-lg uppercase border border-emerald-500/20">Success</span>
+                    </td>
+                </tr>
+                <tr class="hover:bg-slate-50 dark:hover:bg-white/5 transition-colors cursor-default group">
+                    <td class="p-6 text-sm font-bold whitespace-nowrap">OCT 21, 2026</td>
+                    <td class="p-6 text-sm italic uppercase font-black whitespace-nowrap group-hover:text-emerald-500 transition-colors">Void Walker</td>
+                    <td class="p-6 text-sm text-emerald-500 font-mono">+850</td>
+                    <td class="p-6 text-right">
+                        <span class="px-3 py-1 bg-emerald-500/10 text-emerald-500 text-[10px] font-bold rounded-lg uppercase border border-emerald-500/20">Success</span>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<style>
+    .custom-scrollbar::-webkit-scrollbar {
+        height: 4px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-track {
+        background: transparent;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+        background: rgba(16, 185, 129, 0.2);
+        border-radius: 10px;
+    }
+</style>
     </div>
 </main>
 
